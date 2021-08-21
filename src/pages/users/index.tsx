@@ -2,6 +2,7 @@ import {Box, Flex, Heading, Button, Icon, Table, Thead, Tr, Td, Th, Checkbox, Tb
 import {Header} from "../../components/Header/Header"
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import {RiAddLine } from "react-icons/ri";
+import { Pagination } from "../../components/Pagination";
 
 export default function UserList() {
     return (
@@ -49,8 +50,9 @@ export default function UserList() {
                             </Tr>
                         </Tbody>
                     </Table>
+                    <Pagination />
                 </Box>
             </Flex>
-        </Box>
+       </Box>
     )
 }
