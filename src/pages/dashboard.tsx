@@ -1,4 +1,4 @@
-import {Header} from "../components/Header/Header";
+import {Header} from "../components/Header";
 import {Flex, SimpleGrid, Box, Text, theme} from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import { Sidebar } from "../components/Sidebar/Sidebar";
