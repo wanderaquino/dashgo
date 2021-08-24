@@ -27,6 +27,7 @@ export function Header () {
 
             {!isWideScreen && (
                 <IconButton 
+                    display="flex"
                     icon={<Icon as={RiMenuLine} />} 
                     aria-label="Open Navigation Menu"
                     fontSize="24"
