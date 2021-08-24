@@ -6,7 +6,7 @@ export function Notifications () {
         <Stack 
         spacing={["4","8"]} 
         direction="row"
-        mx={["4","8"]} 
+        mx={["2","8"]} 
         pr={["2","8"]} 
         py="1"
         color="gray.300"

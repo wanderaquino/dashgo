@@ -7,7 +7,7 @@ import { useSidebarDrawer } from "../../contexts/SidebarDrawerContext";
 import { RiMenuLine } from "react-icons/ri";
 
 export function Header () {
-    const {isOpen, onOpen} = useSidebarDrawer();
+    const {onOpen} = useSidebarDrawer();
     
     const isWideScreen = useBreakpointValue({
         base: false,
@@ -22,7 +22,7 @@ export function Header () {
             h="20"
             mx="auto"
             mt="4"
-            px="6"
+            px={["2", "6"]}
             align="center">
 
             {!isWideScreen && (
