@@ -11,7 +11,6 @@ export default function UserList() {
         lg: true
     });
 
-    console.log(isWideScreen);
     return (
         <Box>
             <Header />
