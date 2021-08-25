@@ -22,7 +22,7 @@ export function Header () {
             h="20"
             mx="auto"
             mt="4"
-            px={["2", "6"]}
+            px={["6", "8"]}
             align="center">
 
             {!isWideScreen && (
