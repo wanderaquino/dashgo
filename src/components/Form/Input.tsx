@@ -12,7 +12,7 @@ export function Input(props: InputProps) {
         <ChakraInput 
           name={props.name}
           id={props.name} 
-          type="email"
+          type={props.name}
           focusBorderColor="pink.500" 
           bgColor="gray.900"
           variant="filled"
