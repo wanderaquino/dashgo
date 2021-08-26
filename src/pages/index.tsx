@@ -1,7 +1,14 @@
 import { Button, Flex, Stack } from "@chakra-ui/react";
+import {useForm} from "react-hook-form";
 import {Input} from "../components/Form/Input";
 
 export default function Home() {
+  const {register, handleSubmit} = useForm();
+
+  function handleSignIn(values) {
+
+  }
+
   return (
     <Flex w="100vw" h="100vh" align="center" justify="center">
       <Flex 
@@ -12,6 +19,7 @@ export default function Home() {
         padding="8"
         borderRadius={8}
         flexDir="column"
+        onSubmit={handleSubmit(handleSignIn)}
         >
         <Stack spacing="4">
 
@@ -20,6 +28,7 @@ export default function Home() {
             id="email"
             name="email"
             label="E-mail"
+            {...register("email")}
           />
           
           <Input
@@ -27,6 +36,7 @@ export default function Home() {
             id="password"
             name="password"
             label="Senha"
+            {...register("password")}
           ></Input>
         
         </Stack>
