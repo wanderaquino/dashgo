@@ -21,6 +21,23 @@ export function makeServer () {
 
 
             this.passthrough();
+        },
+        factories: {
+            user: Factory.extend({
+                name(i : number) {
+                    return `User Name ${i+1}`
+                },
+                email (i : number) {
+                    return `email_${i+1}@gmail.com`
+                },
+                createdAt () {
+                    return new Date();
+                }
+            })
+        },
+
+        seeds(server) {
+            server.createList("user", 50);
         }
     })
 
