@@ -1,4 +1,4 @@
-import { createServer, Model} from "miragejs";
+import { createServer, Factory, Model} from "miragejs";
 
 type User = {
     name: string,
