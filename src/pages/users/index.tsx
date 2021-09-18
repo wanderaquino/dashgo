@@ -4,18 +4,22 @@ import { Sidebar } from "../../components/Sidebar";
 import {RiAddLine, RiPencilLine } from "react-icons/ri";
 import { Pagination } from "../../components/Pagination";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useQuery } from "react-query";
+
 
 export default function UserList() {
     
+    const {data, isLoading, error} = useQuery("user-list", async () => {
+        const response = await fetch("http://localhost:3000/api/users");
+        const data = response.json();
+
+        return data;
+    }); 
+
     const isWideScreen = useBreakpointValue({
         base: false,
         lg: true
     });
-
-    useEffect(() => {
-        fetch("http://localhost:3000/api/users").then(response => response.json).then(data => console.log(data));
-    }, [])
 
     return (
         <Box>
@@ -38,6 +42,17 @@ export default function UserList() {
 
                     </Flex>
                     {!isWideScreen ? (
+                    isLoading ? (
+                        <Flex justify="center">
+                            <Spinner />
+                        </Flex>
+                    ) : error ? (
+                        <Flex justify="center">
+                            <Text>Erro ao obter dados dos usuários</Text>
+                        </Flex>
+                    ) :
+                     (
+                     <>
                      <Table colorScheme="whiteAlpha">
                         <Thead>
                             <Tr>
@@ -63,11 +78,26 @@ export default function UserList() {
                                 </Td>
                             </Tr>
                         </Tbody>
-                    </Table> )
+                    </Table>
+                    <Pagination />
+                    </>
+                    ))
                     
                     : 
 
                     (
+                    isLoading ? (
+                        <Flex justify="center">
+                            <Spinner />
+                        </Flex>
+                    ) : error ? (
+                        <Flex justify="center">
+                            <Text>Erro ao obter dados dos usuários</Text>
+                        </Flex>
+                    ) :
+
+                    (
+                    <>
                     <Table colorScheme="whiteAlpha" size="sm">
                         <Thead>
                             <Tr>
@@ -103,8 +133,9 @@ export default function UserList() {
                             </Tr>
                         </Tbody>
                     </Table>
-                    )}
                     <Pagination />
+                    </>)
+                    )}
                 </Box>
             </Flex>
        </Box>
