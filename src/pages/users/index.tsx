@@ -1,4 +1,4 @@
-import {Box, Flex, Heading, Button, Icon, Table, Thead, Tr, Td, Th, Checkbox, Tbody, Text, useBreakpointValue} from "@chakra-ui/react";
+import {Box, Flex, Heading, Button, Icon, Table, Thead, Tr, Td, Th, Checkbox, Tbody, Text, useBreakpointValue, Spinner} from "@chakra-ui/react";
 import {Header} from "../../components/Header"
 import { Sidebar } from "../../components/Sidebar";
 import {RiAddLine, RiPencilLine } from "react-icons/ri";
