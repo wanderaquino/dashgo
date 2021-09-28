@@ -4,6 +4,7 @@ import {theme} from "../styles/theme";
 import { SiderbarProvider } from "../contexts/SidebarDrawerContext";
 import { makeServer } from "../services/mirage";
 import {QueryClient, QueryClientProvider} from "react-query";
+import {ReactQueryDevtools} from "react-query/devtools";
 
 
 if(process.env.NODE_ENV === "development") {
@@ -20,6 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
           </SiderbarProvider>
         </ChakraProvider>
+        <ReactQueryDevtools />
     </QueryClientProvider>
   )
 }
