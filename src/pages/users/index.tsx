@@ -144,7 +144,7 @@ export default function UserList() {
                                     </Box>
                                 </Td>
                                 <Td overflowX="hidden" >{userData.createdAt}</Td>
-                                <Td textAlign="center" position="sticky" zIndex="999999">
+                                <Td textAlign="center">
                                     <Button
                                         as="a"
                                         size="sm"
