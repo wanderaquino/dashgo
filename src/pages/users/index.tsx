@@ -63,7 +63,7 @@ export default function UserList() {
                             <Text>Erro ao obter dados dos usuários</Text>
                         </Flex>
                     ) :
-                     (
+                    (
                      <>
                      <Table colorScheme="whiteAlpha">
                         <Thead>
@@ -73,11 +73,13 @@ export default function UserList() {
                             </Tr>
                         </Thead>
                         <Tbody>
-                            <Tr>
+                        {
+                            data.map(userData => (
+                            <Tr key={userData.id}>
                                 <Td px="0">
                                     <Box>
-                                        <Text fontWeight="bold">Wander Aquino</Text>
-                                        <Text fontSize="sm" color="gray.300">wander.aquino@gmail.com</Text>
+                                        <Text fontWeight="bold">{userData.name}</Text>
+                                        <Text fontSize="sm" color="gray.300">{userData.email}</Text>
                                     </Box>
                                 </Td>
                                 <Td px="0" textAlign="right">
@@ -89,6 +91,8 @@ export default function UserList() {
                                     </Button>
                                 </Td>
                             </Tr>
+                            ))
+                        }
                         </Tbody>
                     </Table>
                     <Pagination />
@@ -122,17 +126,19 @@ export default function UserList() {
                             </Tr>
                         </Thead>
                         <Tbody>
-                            <Tr>
+                        {
+                            data.map(userData => (
+                            <Tr key={userData.id}>
                                 <Td px="6">
                                     <Checkbox colorScheme="pink"></Checkbox>
                                 </Td>
                                 <Td>
                                     <Box>
-                                        <Text fontWeight="bold">Wander Aquino</Text>
-                                        <Text fontSize="sm" color="gray.300">wander.aquino@gmail.com</Text>
+                                        <Text fontWeight="bold">{userData.name}</Text>
+                                        <Text fontSize="sm" color="gray.300">{userData.email}</Text>
                                     </Box>
                                 </Td>
-                                <Td overflowX="hidden" >03/08/2021</Td>
+                                <Td overflowX="hidden" >{userData.createdAt}</Td>
                                 <Td textAlign="center" position="sticky" zIndex="999999">
                                     <Button
                                         as="a"
@@ -143,6 +149,8 @@ export default function UserList() {
                                     </Button>
                                 </Td>
                             </Tr>
+                            ))
+                        }
                         </Tbody>
                     </Table>
                     <Pagination />
