@@ -9,7 +9,7 @@ import { useQuery } from "react-query";
 
 export default function UserList() {
     
-    const {data, isLoading, error} = useQuery("user-list", async () => {
+    const {data, isLoading, error, isFetching} = useQuery("user-list", async () => {
         const response = await fetch("http://localhost:3000/api/users");
         const data = await response.json();
         const users = data.users.map(user => {
@@ -40,7 +40,10 @@ export default function UserList() {
                 <Sidebar />
                 <Box flex="1" borderRadius={8} bg="gray.800" p="4">
                     <Flex mb="8" justify="space-between" align="center">
-                        <Heading size="lg" fontWeight="bold">Usuários</Heading>
+                        <Heading size="lg" fontWeight="bold">
+                            Usuários
+                            {!isLoading && isFetching && <Spinner ml="1rem" /> }
+                        </Heading>
                         <Link href="/users/create">
                             <Button 
                                 as="a" 
