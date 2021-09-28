@@ -11,9 +11,21 @@ export default function UserList() {
     
     const {data, isLoading, error} = useQuery("user-list", async () => {
         const response = await fetch("http://localhost:3000/api/users");
-        const data = response.json();
+        const data = await response.json();
+        const users = data.users.map(user => {
+            return {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                createdAt: new Date(user.createdAt).toLocaleString("pt-BR", {
+                    day: "2-digit",
+                    month:"short",
+                    year:"numeric"
+                })
+            }
+        });
 
-        return data;
+        return users;
     }); 
 
     const isWideScreen = useBreakpointValue({
