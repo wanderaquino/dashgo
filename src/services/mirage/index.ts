@@ -1,4 +1,4 @@
-import { createServer, Factory, Model} from "miragejs";
+import { createServer, Factory, Model, Response} from "miragejs";
 
 type User = {
     name: string,
@@ -15,7 +15,21 @@ export function makeServer () {
             //Time to fetch data in ms...
             this.timing = 850;
             this.namespace = "api";
-            this.get("/users");
+            this.get("/users", function (schema, request) {
+                const {page = 1, itens_per_page = 10} = request.queryParams;
+                const total = schema.all("user").length;
+
+                const pageStart = (Number(page) -1) * Number(itens_per_page);
+                const pageEnd = pageStart + Number(itens_per_page);
+                const pageUsers = this.serialize(schema.all("user")).users.slice(pageStart, pageEnd);
+
+                return new Response (
+                    200,
+                    {"x-total-itens": String(total)},
+                    {users: pageUsers}
+                )
+
+            });
             this.post("/users")
             this.namespace="";
 
