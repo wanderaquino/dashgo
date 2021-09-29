@@ -1,7 +1,14 @@
 import { useQuery } from "react-query";
 import { api } from "../../api";
 
-async function getUsers () {
+type User = {
+    id: string,
+    name: string,
+    email: string,
+    createdAt: string
+}
+
+async function getUsers () : Promise<User[]> {
     const response = await api.get("http://localhost:3000/api/users");
     const data = await response.data;
     const users = data.users.map(user => {
