@@ -4,31 +4,12 @@ import { Sidebar } from "../../components/Sidebar";
 import {RiAddLine, RiPencilLine } from "react-icons/ri";
 import { Pagination } from "../../components/Pagination";
 import Link from "next/link";
-import { useQuery } from "react-query";
+import { useUsers } from "../../services/hooks/users/useUsers";
 
 
 export default function UserList() {
     
-    const {data, isLoading, error, isFetching} = useQuery("user-list", async () => {
-        const response = await fetch("http://localhost:3000/api/users");
-        const data = await response.json();
-        const users = data.users.map(user => {
-            return {
-                id: user.id,
-                name: user.name,
-                email: user.email,
-                createdAt: new Date(user.createdAt).toLocaleString("pt-BR", {
-                    day: "2-digit",
-                    month:"short",
-                    year:"numeric"
-                })
-            }
-        });
-
-        return users;
-    }, {
-        staleTime: 1000 * 5
-    }); 
+    const {data, isLoading, error, isFetching} = useUsers();
 
     const isWideScreen = useBreakpointValue({
         base: false,
