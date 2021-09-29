@@ -51,7 +51,7 @@ export function makeServer () {
         },
 
         seeds(server) {
-            server.createList("user", 10);
+            server.createList("user", 50);
         }
     })
 
