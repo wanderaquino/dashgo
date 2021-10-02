@@ -5,11 +5,12 @@ import {RiAddLine, RiPencilLine } from "react-icons/ri";
 import { Pagination } from "../../components/Pagination";
 import Link from "next/link";
 import { useUsers } from "../../services/hooks/users/useUsers";
-
+import {useState} from "react";
 
 export default function UserList() {
-    
-    const {data, isLoading, error, isFetching} = useUsers();
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const {data, isLoading, error, isFetching} = useUsers(currentPage);
 
     const isWideScreen = useBreakpointValue({
         base: false,
