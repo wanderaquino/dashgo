@@ -114,7 +114,7 @@ export default function UserList() {
                         </Thead>
                         <Tbody>
                         {
-                            data.map(userData => (
+                            data.users.map(userData => (
                             <Tr key={userData.id}>
                                 <Td px="6">
                                     <Checkbox colorScheme="pink"></Checkbox>
