@@ -61,7 +61,7 @@ export default function UserList() {
                         </Thead>
                         <Tbody>
                         {
-                            data.map(userData => (
+                            data.users.map(userData => (
                             <Tr key={userData.id}>
                                 <Td px="0">
                                     <Box>
@@ -82,7 +82,7 @@ export default function UserList() {
                         }
                         </Tbody>
                     </Table>
-                    <Pagination />
+                    <Pagination totalCountRegisters={data.totalItems} currentPage={currentPage} registersPerPage={10} onPageChange={setCurrentPage} />
                     </>
                     ))
                     
@@ -140,7 +140,7 @@ export default function UserList() {
                         }
                         </Tbody>
                     </Table>
-                    <Pagination />
+                    <Pagination totalCountRegisters={data.totalItems} currentPage={currentPage} registersPerPage={10} onPageChange={setCurrentPage}/>
                     </>)
                     )}
                 </Box>
