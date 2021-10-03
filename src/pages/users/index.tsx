@@ -1,9 +1,9 @@
-import {Box, Flex, Heading, Button, Icon, Table, Thead, Tr, Td, Th, Checkbox, Tbody, Text, useBreakpointValue, Spinner} from "@chakra-ui/react";
+import {Link, Box, Flex, Heading, Button, Icon, Table, Thead, Tr, Td, Th, Checkbox, Tbody, Text, useBreakpointValue, Spinner} from "@chakra-ui/react";
 import {Header} from "../../components/Header"
 import { Sidebar } from "../../components/Sidebar";
 import {RiAddLine, RiPencilLine } from "react-icons/ri";
 import { Pagination } from "../../components/Pagination";
-import Link from "next/link";
+import NextLink from "next/link";
 import { useUsers } from "../../services/hooks/users/useUsers";
 import {useState} from "react";
 
