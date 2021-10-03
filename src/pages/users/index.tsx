@@ -6,6 +6,8 @@ import { Pagination } from "../../components/Pagination";
 import NextLink from "next/link";
 import { useUsers } from "../../services/hooks/users/useUsers";
 import {useState} from "react";
+import { queryClient } from "../../services/queryClient";
+import { api } from "../../services/api";
 
 export default function UserList() {
 
@@ -16,6 +18,15 @@ export default function UserList() {
         base: false,
         lg: true
     });
+
+    async function handlePrefetchUserData(userId: string) {
+        await queryClient.prefetchQuery(["user-list", userId], async () => {
+            const response = await api.get(`users/${userId}`);
+            console.log(response.data);
+            return response.data;
+        });
+        
+    }
 
     return (
         <Box>
@@ -65,7 +76,9 @@ export default function UserList() {
                             <Tr key={userData.id}>
                                 <Td px="0">
                                     <Box>
-                                        <Text fontWeight="bold">{userData.name}</Text>
+                                        <Link _hover={{textDecoration: "none"}} color="purple.400" onMouseEnter={() => handlePrefetchUserData(userData.id)}>
+                                            <Text fontWeight="bold">{userData.name}</Text>
+                                        </Link>
                                         <Text fontSize="sm" color="gray.300">{userData.email}</Text>
                                     </Box>
                                 </Td>
@@ -121,7 +134,9 @@ export default function UserList() {
                                 </Td>
                                 <Td>
                                     <Box>
-                                        <Text fontWeight="bold">{userData.name}</Text>
+                                        <Link _hover={{textDecoration: "none"}} color="purple.400" onMouseEnter={() => handlePrefetchUserData(userData.id)}>
+                                            <Text fontWeight="bold">{userData.name}</Text>
+                                        </Link>
                                         <Text fontSize="sm" color="gray.300">{userData.email}</Text>
                                     </Box>
                                 </Td>
