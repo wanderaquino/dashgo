@@ -39,7 +39,7 @@ export default function UserList() {
                             Usuários
                             {!isLoading && isFetching && <Spinner ml="1rem" /> }
                         </Heading>
-                        <Link href="/users/create">
+                        <NextLink href="/users/create">
                             <Button 
                                 as="a" 
                                 size="sm" 
@@ -48,7 +48,7 @@ export default function UserList() {
                                 <Icon as={RiAddLine} fontSize={20}/>
                                 {isWideScreen && "Criar Usuário"}
                             </Button>
-                        </Link>
+                        </NextLink>
 
                     </Flex>
                     {!isWideScreen ? (
