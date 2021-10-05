@@ -32,7 +32,6 @@ async function getUsers (page: number) : Promise<UserResponse> {
             })
         }
     });
-
     return {
         users,
         totalItems
