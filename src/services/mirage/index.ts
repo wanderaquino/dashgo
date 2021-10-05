@@ -3,7 +3,7 @@ import { createServer, Factory, Model, Response, RestSerializer} from "miragejs"
 type User = {
     name: string,
     email: string,
-    created_at: string
+    createdAt: string
 }
 
 export function makeServer () {
@@ -21,11 +21,9 @@ export function makeServer () {
             this.get("/users", function (schema, request) {
                 const {page = 1, itens_per_page = 10} = request.queryParams;
                 const total = schema.all("user").length;
-
                 const pageStart = (Number(page) -1) * Number(itens_per_page);
                 const pageEnd = pageStart + Number(itens_per_page);
                 const pageUsers = this.serialize(schema.all("user")).users.slice(pageStart, pageEnd);
-
                 return new Response (
                     200,
                     {"x-total-itens": String(total)},
