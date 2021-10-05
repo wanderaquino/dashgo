@@ -1,4 +1,4 @@
-import { createServer, Factory, Model, Response} from "miragejs";
+import { createServer, Factory, Model, Response, RestSerializer} from "miragejs";
 
 type User = {
     name: string,
@@ -8,6 +8,9 @@ type User = {
 
 export function makeServer () {
     const server = createServer({
+        serializers: {
+            application: RestSerializer
+        },
         models: {
             user: Model.extend<Partial<User>>({})
         },
